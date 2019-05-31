@@ -12,4 +12,9 @@ public partial class _Default : Page
 
     }
 
+
+    protected void btnGo_Click(object sender, EventArgs e)
+    {
+        displayBox.Text = firstWord.Text + " " + secondWord.Text;
+    }
 }

@@ -47,7 +47,7 @@
 
 
             <p>
-                &nbsp;<asp:Button ID="btnGo" runat="server" BorderColor="#CC0099" BorderWidth="1px" CssClass="btn" Height="32px" Text="Proceed" ToolTip="Proceed" Width="128px" />
+                &nbsp;<asp:Button ID="btnGo" runat="server" BorderColor="#CC0099" BorderWidth="1px" CssClass="btn" Height="32px" OnClick="btnGo_Click" Text="Proceed" ToolTip="Proceed" Width="128px" />
             </p>
         </div>
 
