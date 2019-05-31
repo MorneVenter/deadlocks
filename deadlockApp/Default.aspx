@@ -3,39 +3,53 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <h1>File Editor</h1>
+        <p class="lead">Please read the file below, enter a word to replace and a word to replace it with. Press the Proceed button.</p>
+        <p class="lead">
+          
+
+            
     </div>
+
+    <style>
+        .text-primary
+        {
+            margin:auto;
+            min-width: 150px;
+            max-width: 700px;
+            min-height: 210px;
+            max-height:220px;
+            resize:inherit;
+        }
+    </style>
+   
+
+         <center>
+             <asp:TextBox ID="displayBox" runat="server" BorderColor="#CC0099" BorderWidth="2px" Height="212px" ReadOnly="True" TextMode="MultiLine" ToolTip="The Text" CssClass="text-primary" Width="530px">hi daar</asp:TextBox>
+        </center>
+
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Getting started</h2>
+            <h2>Replace words</h2>
+
+
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Replace: "></asp:Label>
+            <asp:TextBox ID="firstWord" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="With: "></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="secondWord" runat="server"></asp:TextBox>
+            <br />
+            <br />
+
+
             <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+                &nbsp;<asp:Button ID="btnGo" runat="server" BorderColor="#CC0099" BorderWidth="1px" CssClass="btn" Height="32px" Text="Proceed" ToolTip="Proceed" Width="128px" />
             </p>
         </div>
+
     </div>
 </asp:Content>
