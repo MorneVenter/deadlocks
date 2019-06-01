@@ -25,6 +25,12 @@ public partial class _Default : Page
 
     private void startMain()
     {
+        if (firstWord.Text == "" || secondWord.Text == "")
+        {
+            loadImg.Visible = false;
+            return;
+        }
+
         //check for lock here
         if (File.Exists(Server.MapPath("theFile.lock")))
         {
