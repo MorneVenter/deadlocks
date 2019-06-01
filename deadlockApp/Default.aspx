@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <div class="jumbotron">
         <h1>File Editor</h1>
@@ -45,13 +46,17 @@
             <br />
             <br />
 
-
             <p>
-                &nbsp;<asp:Button ID="btnGo" runat="server" BorderColor="#CC0099" BorderWidth="1px" CssClass="btn" Height="32px" OnClick="btnGo_Click" Text="Proceed" ToolTip="Proceed" Width="128px" />
+                &nbsp;<asp:Button ID="btnGo" runat="server" BorderColor="#CC0099" BorderWidth="1px" CssClass="btn" Height="35px" OnClick="btnGo_Click" Text="Proceed" ToolTip="Proceed" Width="126px"/>
+               
+                <asp:Image ID="loadImg" runat="server" ImageUrl="~/load.gif" Width="73px" />
+
             </p>
         </div>
 
-        <center><asp:Label ID="ErrorLabel" runat="server" ForeColor="#CC0066"></asp:Label></center>
+        <br />
+
+       <asp:Label ID="ErrorLabel" runat="server" ForeColor="#CC0066"></asp:Label>
 
     </div>
 </asp:Content>
