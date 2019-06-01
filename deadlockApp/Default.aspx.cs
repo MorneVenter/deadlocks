@@ -11,35 +11,80 @@ public partial class _Default : Page
     protected void Page_Load(object sender, EventArgs e)
     {
         updatetext();
+       
     }
 
 
     protected void btnGo_Click(object sender, EventArgs e)
     {
-        displayBox.Text = firstWord.Text + " " + secondWord.Text;
-        string newStr = "";
+        
 
-        using (StreamReader sr = new StreamReader(Server.MapPath("theFile.txt")))
+        //check for lock here
+        if(File.Exists(Server.MapPath("theFile.lock")))
         {
-            string strContents = sr.ReadToEnd();
-            newStr = strContents.Replace(firstWord.Text, secondWord.Text);
-           
+            ErrorLabel.Text = "File currently in use, please try again.";
+            return;
         }
 
-        using (StreamWriter wr = new StreamWriter(Server.MapPath("theFile.txt"), false))
+
+        //create lock here
+        try
         {
-            wr.WriteLine(newStr);
+            if (!File.Exists(Server.MapPath("theFile.lock")))
+            {
+                FileStream strm = File.Create(Server.MapPath("theFile.lock"));
+                strm.Close();
+            }
+        }
+        catch(Exception err)
+        {
+            ErrorLabel.Text = "File currently in use, please try again.";
+            return;
+        }
+
+
+        string newStr = "";
+        using (FileStream stroom = new FileStream(Server.MapPath("theFile.txt"), FileMode.Open, FileAccess.Read, FileShare.None))  //new StreamReader(Server.MapPath("theFile.txt")))
+        {
+            using (StreamReader sr = new StreamReader(stroom))
+            {
+                string strContents = sr.ReadToEnd();
+                newStr = strContents.Replace(firstWord.Text, secondWord.Text);
+
+            }
+
+        }
+        using (FileStream stroom = new FileStream(Server.MapPath("theFile.txt"), FileMode.Open, FileAccess.Write, FileShare.None))  //new StreamReader(Server.MapPath("theFile.txt")))
+        {
+            using (StreamWriter wr = new StreamWriter(stroom))
+            {
+                wr.WriteLine(newStr);
+            }
         }
 
         updatetext();
+
+        //delete lock here
+        try
+        {
+            File.Delete(Server.MapPath("theFile.lock"));
+        }
+        catch (Exception err)
+        {
+            ErrorLabel.Text = "File currently in use, please try again.";
+            return;
+        }
     }
 
     private void updatetext()
     {
-        using (StreamReader sr = new StreamReader(Server.MapPath("theFile.txt")))
+        using (FileStream stroom = new FileStream(Server.MapPath("theFile.txt"), FileMode.Open, FileAccess.Read, FileShare.None))  //new StreamReader(Server.MapPath("theFile.txt")))
         {
-            string strContents = sr.ReadToEnd();
-            displayBox.Text = strContents;
+            using (StreamReader sr = new StreamReader(stroom))
+            {
+                string strContents = sr.ReadToEnd();
+                displayBox.Text = strContents;
+            }
         }
     }
 }

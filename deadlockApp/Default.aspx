@@ -51,5 +51,7 @@
             </p>
         </div>
 
+        <center><asp:Label ID="ErrorLabel" runat="server" ForeColor="#CC0066"></asp:Label></center>
+
     </div>
 </asp:Content>
