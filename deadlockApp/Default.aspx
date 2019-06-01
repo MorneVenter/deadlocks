@@ -25,7 +25,7 @@
    
 
          <center>
-             <asp:TextBox ID="displayBox" runat="server" BorderColor="#CC0099" BorderWidth="2px" Height="212px" ReadOnly="True" TextMode="MultiLine" ToolTip="The Text" CssClass="text-primary" Width="530px">hi daar</asp:TextBox>
+             <asp:TextBox ID="displayBox" runat="server" BorderColor="#CC0099" BorderWidth="2px" Height="212px" ReadOnly="True" TextMode="MultiLine" ToolTip="The Text" CssClass="text-primary" Width="550px">hi daar</asp:TextBox>
         </center>
 
 
